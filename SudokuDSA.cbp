@@ -34,10 +34,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="README.md">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="include/graph.h" />
+		<Unit filename="include/map_pair.h" />
 		<Unit filename="include/node.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/graph.cpp" />
+		<Unit filename="src/map_pair.cpp" />
 		<Unit filename="src/node.cpp" />
 		<Extensions />
 	</Project>

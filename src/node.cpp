@@ -32,21 +32,14 @@ int Node::setData(int data)
     return 1;
 }
 
-bool Node::operator<(const Node& otherNode)
+bool Node::operator<(const Node& otherNode)const
 {
-    if(id < otherNode.id)
-    {
-        return true;
-    }
-    return false;
+    return id < otherNode.id;
 }
 
-bool Node::operator==(const Node& otherNode)
+bool Node::operator==(const Node& otherNode)const
 {
-    if(id == otherNode.id){
-        return true;
-    }
-    return false;
+    return id == otherNode.id;
 }
 
 void Node::operator=(const Node& newNode)

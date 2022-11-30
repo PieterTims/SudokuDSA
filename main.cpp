@@ -31,6 +31,7 @@ void printSudoku()
 int main()
 {
     Graph graph = Graph();
+    graph.printGraph();
 //    Node testNode;
 //    testNode = Node(0,1);
 //    cout<<testNode.getID()<<endl;

@@ -5,10 +5,10 @@ using namespace std;
 MapPair::MapPair()
 {
     this->key = Node();
-    this->values = vector<Node>();
+    this->values = set<Node>();
 }
 
-MapPair::MapPair(int ID, Node key, vector<Node> values)
+MapPair::MapPair(int ID, Node key, set<Node> values)
 {
     this->ID = ID;
     this->key = key;
@@ -20,7 +20,7 @@ Node MapPair::getKey()
     return this->key;
 }
 
-vector<Node> MapPair::getValues()
+set<Node> MapPair::getValues()
 {
     return this->values;
 }
@@ -32,10 +32,15 @@ int MapPair::getID()
 
 int MapPair::addValue(Node toAdd)
 {
-    values.push_back(toAdd);
+    values.insert(toAdd);
     return 1;
 }
 
+int MapPair::removeValue(Node toRemove)
+{
+    values.erase(toRemove);
+    return 1;
+}
 Node MapPair::findValue(Node toSearch)
 {
     it = find(values.begin(),values.end(),toSearch);
@@ -44,6 +49,16 @@ Node MapPair::findValue(Node toSearch)
         return toSearch;
     }
     return Node();
+}
+
+bool MapPair::hasValue(Node toSearch)
+{
+    it = find(values.begin(),values.end(),toSearch);
+    if(it!=values.end())
+    {
+        return true;
+    }
+    return false;
 }
 
 void MapPair::operator=(const MapPair& newMapPair)

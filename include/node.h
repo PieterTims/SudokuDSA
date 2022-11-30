@@ -17,8 +17,8 @@ public:
     //Setters
     int setData(int);
     //Operators
-    bool operator<(const Node&);
-    bool operator==(const Node&);
+    bool operator<(const Node&)const;
+    bool operator==(const Node&)const;
     void operator=(const Node&);
 private:
     int id;
