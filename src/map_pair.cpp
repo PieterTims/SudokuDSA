@@ -2,32 +2,27 @@
 
 using namespace std;
 
+//Constructors
 MapPair::MapPair()
 {
-    this->key = Node();
-    this->values = set<Node>();
+    MapPair(Node(),set<Node>());
 }
 
-MapPair::MapPair(int ID, Node key, set<Node> values)
+MapPair::MapPair(Node key, set<Node> values)
 {
-    this->ID = ID;
     this->key = key;
     this->values = values;
 }
 
+//Key-Value Functions
 Node MapPair::getKey()
 {
-    return this->key;
+    return key;
 }
 
 set<Node> MapPair::getValues()
 {
-    return this->values;
-}
-
-int MapPair::getID()
-{
-    return this->ID;
+    return values;
 }
 
 int MapPair::addValue(Node toAdd)
@@ -41,6 +36,7 @@ int MapPair::removeValue(Node toRemove)
     values.erase(toRemove);
     return 1;
 }
+
 Node MapPair::findValue(Node toSearch)
 {
     it = find(values.begin(),values.end(),toSearch);
@@ -61,9 +57,34 @@ bool MapPair::hasValue(Node toSearch)
     return false;
 }
 
+//Sudoku Functions
+void MapPair::allDuplicate(int data)
+{
+    set<Node> newDupeList = set<Node>();
+    for(it = values.begin(); it != values.end(); ++it)
+    {
+        if((*it).getData() == data)
+        {
+            Node n = *it;
+            newDupeList.insert(n);
+        }
+    }
+    duplicates = newDupeList;
+}
+
+int MapPair::existsDuplicate()
+{
+    return duplicates.size();
+}
+
+set<Node> MapPair::getDuplicates()
+{
+    return duplicates;
+}
+
+//Overload Operators
 void MapPair::operator=(const MapPair& newMapPair)
 {
-    ID = newMapPair.ID;
     key = newMapPair.key;
     values = newMapPair.values;
 }

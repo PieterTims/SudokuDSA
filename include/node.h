@@ -11,16 +11,20 @@ public:
     Node();
     Node(int); //no data
     Node(int,int);
-    //Getters
+
+    //Node Functions
     int getID();
-    int getData();
-    //Setters
+    int getData()const;
     int setData(int);
+
     //Operators
     bool operator<(const Node&)const;
     bool operator==(const Node&)const;
+    bool operator==(const int)const;
     void operator=(const Node&);
+
 private:
+    //Node Variables
     int id;
     int data;
 };

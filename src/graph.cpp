@@ -1,21 +1,22 @@
 #include <iostream>
+#include <cstdlib>
+#include <windows.h>
 #include "graph.h"
+#include "time.h"
 
 using namespace std;
 
 Graph::Graph()
 {
     //Build adjacency list
+    srand(time(0));
     for(int i = 0; i < MAX_PAIR; i++)
-    {
-        adjList[i] = MapPair(i,Node(i,-1),set<Node>());
-    }
-    cout<<"Created Adjacency List"<<endl;
+        adjList[i] = MapPair(Node(i,rand()%9+1),set<Node>());
 
     //Add neighbors
     int row = 0;
     int column = 0;
-    int grid[] = {0,0,0}; //id of topleft
+    int grid[] = {0,0,0};
     for(int i = 0; i < MAX_PAIR; i++)
     {
         if(i%9 == 0 && i != 0)
@@ -37,24 +38,69 @@ Graph::Graph()
 
         adjList[i].removeValue(adjList[i].getKey());
     }
-    cout <<"DONE" <<endl;
+    for(int i = 0; i < MAX_PAIR; i++){
+        adjList[i].allDuplicate(adjList[i].getKey().getData());
+    }
 }
-//Add neighbor in 3x3 grid
-
 
 void Graph::printGraph()
 {
     for(int i = 0; i < MAX_PAIR; i++)
     {
-        cout << adjList[i].getKey().getID() << " ";
-        if(adjList[i].getKey().getID()<10)
-            cout<<" ";
-        for(Node value : adjList[i].getValues())
+        if(i%9 == 0 && i != 0)
+            cout << (char)179 << endl;
+        if(i%27 == 0)
         {
-            cout<<value.getID() << " ";
-            if(value.getID()<10)
-                cout<<" ";
+            switch(i/27)
+            {
+            case 0: //top
+                cout << (char)218;
+                printLineHelper();
+                cout << (char)194;
+                printLineHelper();
+                cout << (char)194;
+                printLineHelper();
+                cout << (char)191 << endl;
+                break;
+            case 1:
+            case 2://mid
+                cout << (char)195;
+                printLineHelper();
+                cout << (char)197;
+                printLineHelper();
+                cout << (char)197;
+                printLineHelper();
+                cout << (char)180 << endl;
+                break;
+            }
         }
-        cout << endl;
+        if(i%3 == 0)
+            cout << (char)179 <<" ";
+        if(adjList[i].existsDuplicate() > 0)
+            setcolor(12);
+        cout << adjList[i].getKey().getData() << " ";
+        setcolor(15);
     }
+    cout << (char)179 << endl;
+    cout << (char)192;
+    printLineHelper();
+    cout << (char)193;
+    printLineHelper();
+    cout << (char)193;
+    printLineHelper();
+    cout << (char)217 << endl;
+}
+
+//Private Functions
+void Graph::printLineHelper()
+{
+    for(int i = 0; i < 7; i++)
+        cout << (char)196;
+}
+
+void Graph::setcolor(unsigned short color)                 //The function that you'll use to
+{
+    //set the colour
+    HANDLE hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hcon,color);
 }

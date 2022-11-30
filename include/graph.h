@@ -13,6 +13,8 @@ public:
     int findID(int);
 private:
     MapPair adjList[MAX_PAIR];
+    void printLineHelper();
+    void setcolor(unsigned short);
 };
 
 #endif // GRAPH_H
