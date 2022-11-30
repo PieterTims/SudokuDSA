@@ -2,6 +2,7 @@
 #define GRAPH_H
 
 #define MAX_PAIR 81
+#include "map_pair.h"
 //DO NOT FORGET TO IMPLEMENT DESTRUCTOR
 
 class Graph
@@ -11,7 +12,7 @@ public:
     void printGraph();
     int findID(int);
 private:
-
+    MapPair adjList[MAX_PAIR];
 };
 
 #endif // GRAPH_H

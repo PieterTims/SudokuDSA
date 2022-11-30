@@ -3,14 +3,29 @@
 
 #define MAX_VECTOR_SIZE 20
 #include "node.h"
+#include <vector>
+#include <algorithm>
 
-class map_pair
+class MapPair
 {
     public:
-        map_pair();
+        //Constructors
+        MapPair();
+        MapPair(int,Node,std::vector<Node>);
+        //Getters
+        Node getKey();
+        std::vector<Node> getValues();
+        int getID();
+        //Functions
+        int addValue(Node);
+        Node findValue(Node);
+        //Operators
+        void operator=(const MapPair&);
     private:
+        int ID;
         Node key;
         std::vector<Node> values;
+        std::vector<Node>::iterator it;
 };
 
 #endif // MAP_PAIR_H

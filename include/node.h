@@ -8,6 +8,7 @@ class Node
 {
 public:
     //Constructors
+    Node();
     Node(int); //no data
     Node(int,int);
     //Getters
@@ -15,6 +16,10 @@ public:
     int getData();
     //Setters
     int setData(int);
+    //Operators
+    bool operator<(const Node&);
+    bool operator==(const Node&);
+    void operator=(const Node&);
 private:
     int id;
     int data;

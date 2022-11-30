@@ -30,7 +30,9 @@ void printSudoku()
 
 int main()
 {
-    Graph adjList = Graph();
-
+    Graph graph = Graph();
+//    Node testNode;
+//    testNode = Node(0,1);
+//    cout<<testNode.getID()<<endl;
     return 0;
 }

@@ -1,19 +1,27 @@
 # depslib dependency file v1.0
-1669784903 source:c:\users\pieter\documents\sudokudsa\src\node.cpp
+1669787482 source:c:\users\pieter\documents\sudokudsa\src\node.cpp
 	"node.h"
 
-1669784910 c:\users\pieter\documents\sudokudsa\include\node.h
+1669787440 c:\users\pieter\documents\sudokudsa\include\node.h
 
-1669785024 source:c:\users\pieter\documents\sudokudsa\main.cpp
+1669790159 source:c:\users\pieter\documents\sudokudsa\main.cpp
 	<iostream>
 	<windows.h>
 	"graph.h"
 	<vector>
 
-1669785034 source:c:\users\pieter\documents\sudokudsa\src\graph.cpp
+1669791118 source:c:\users\pieter\documents\sudokudsa\src\graph.cpp
 	<iostream>
 	"graph.h"
 
-1669784930 c:\users\pieter\documents\sudokudsa\include\graph.h
+1669787808 c:\users\pieter\documents\sudokudsa\include\graph.h
+	"map_pair.h"
+
+1669789721 source:c:\users\pieter\documents\sudokudsa\src\map_pair.cpp
+	"map_pair.h"
+
+1669789863 c:\users\pieter\documents\sudokudsa\include\map_pair.h
 	"node.h"
+	<vector>
+	<algorithm>
 
