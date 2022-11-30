@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1669784903 source:c:\users\pieter\documents\sudokudsa\src\node.cpp
+	"node.h"
+
+1669784910 c:\users\pieter\documents\sudokudsa\include\node.h
+
+1669785024 source:c:\users\pieter\documents\sudokudsa\main.cpp
+	<iostream>
+	<windows.h>
+	"graph.h"
+	<vector>
+
+1669785034 source:c:\users\pieter\documents\sudokudsa\src\graph.cpp
+	<iostream>
+	"graph.h"
+
+1669784930 c:\users\pieter\documents\sudokudsa\include\graph.h
+	"node.h"
+
