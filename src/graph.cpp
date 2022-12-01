@@ -1,6 +1,5 @@
 #include <iostream>
 #include <windows.h>
-#include <unordered_set>
 #include "graph.h"
 #include "time.h"
 
@@ -15,7 +14,7 @@ Graph::Graph()
 
     //Build adjacency list
     for(int i = 0; i < MAX_PAIR; i++)
-        adjList[i] = MapPair(allNode[i],set<Node>());
+        adjList[i] = MapPair(allNode[i],set<int>());
 
     //Add neighbors
     int row = 0;
@@ -31,16 +30,16 @@ Graph::Graph()
         grid[2] = grid[1] + 9;
         for (int j = 0; j < 9; j++)
         {
-            adjList[i].addIntValue(adjList[j+(row*9)].getKey().getID()); //all in row
-            adjList[i].addIntValue(adjList[(column++*9)+(i%9)].getKey().getID()); // all in column
+            adjList[i].addValue(adjList[j+(row*9)].getKey().getID()); //all in row
+            adjList[i].addValue(adjList[(column++*9)+(i%9)].getKey().getID()); // all in column
         }
         column = 0;
 
         for(int j = 0; j < 3; j++) //iterate grid
             for(int k = 0; k < 3; k++)
-                adjList[i].addIntValue(adjList[grid[j]+k].getKey().getID());
+                adjList[i].addValue(adjList[grid[j]+k].getKey().getID());
 
-        adjList[i].removeIntValue(adjList[i].getKey().getID());
+        adjList[i].removeValue(adjList[i].getKey().getID());
     }
 
 }
@@ -79,7 +78,7 @@ void Graph::printGraph()
         }
         if(i%3 == 0)
             cout << (char)179 <<" ";
-        if(adjList[i].checkDuplicate(2))
+        if(checkDuplicate(i))
             setcolor(12);
         if(adjList[i].getKey().getData() == 0)
             setcolor(14);
@@ -108,7 +107,7 @@ bool Graph::generateRandomSudoku()
 
     for(auto it = randCells.begin(); it != randCells.end(); ++it)
         adjList[*it].getKey().setData(firstNine++);
-//    return generateRandomSudokuHelper(findUnassigned());
+    return generateRandomSudokuHelper(findUnassigned(), shufflingNine());
 }
 
 //Helper Functions
@@ -125,16 +124,16 @@ void Graph::setcolor(unsigned short color)
     SetConsoleTextAttribute(hcon,color);
 }
 
-bool Graph::generateRandomSudokuHelper(int pos)
+bool Graph::generateRandomSudokuHelper(int pos, unordered_set<int> shuffleNine)
 {
     if(pos == -1)
         return true;
-    for(int num = 1; num < 10; num++)
+    for(auto num = shuffleNine.begin(); num != shuffleNine.end(); ++num)
     {
-        adjList[pos].getKey().setData(num);
-        if(!adjList[pos].checkDuplicate())
+        if(!checkDuplicate(pos, *num))
         {
-            if(generateRandomSudokuHelper(findUnassigned()))
+            adjList[pos].getKey().setData(*num);
+            if(generateRandomSudokuHelper(findUnassigned(),shufflingNine()))
                 return true;
             adjList[pos].getKey().setData(0);
         }
@@ -148,4 +147,30 @@ int Graph::findUnassigned()
         if(adjList[i].getKey().getData() == 0)
             return i;
     return -1;
+}
+
+bool Graph::checkDuplicate(int ID)
+{
+    return checkDuplicate(ID,adjList[ID].getKey().getData());
+}
+
+bool Graph::checkDuplicate(int ID, int num)
+{
+    set<int> toCheck = adjList[ID].getValues();
+    for(auto it = toCheck.begin(); it != toCheck.end(); ++it)
+    {
+        if(num == adjList[*it].getKey().getData())
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+unordered_set<int> Graph::shufflingNine()
+{
+    unordered_set<int> shuffleNine;
+    while(shuffleNine.size() < 9)
+        shuffleNine.insert(rand()%9+1);
+    return shuffleNine;
 }

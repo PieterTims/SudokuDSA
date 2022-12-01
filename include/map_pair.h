@@ -11,37 +11,22 @@ class MapPair
     public:
         //Constructors
         MapPair();
-        MapPair(Node,std::set<Node>);
+        MapPair(Node,std::set<int>);
 
-        //Key-Value Functions
+        //Map Functions
         Node& getKey();
-        std::set<Node> getValues();
-        int addValue(Node);
-        int removeValue(Node);
-        Node findValue(Node);
-        bool hasValue(Node);
-
-        int addIntValue(int);
-        int removeIntValue(int);
-
-        //Sudoku Functions
-        bool checkDuplicate();
-        bool checkDuplicate(int);
+        int addValue(int);
+        int removeValue(int);
+        std::set<int> getValues();
 
         //Overload Operators
         void operator=(const MapPair&);
 
-        //Public Variables
-
     private:
-        //Key-Value Variables
+        //Map Variables
         Node key;
-        std::set<Node> values;
-        std::set<Node>::iterator it;
-
-        std::set<int> intValues;
-
-        //Sudoku Variables
+        std::set<int> values;
+        std::set<int>::iterator it;
 };
 
 #endif // MAP_PAIR_H

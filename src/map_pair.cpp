@@ -5,10 +5,10 @@ using namespace std;
 //Constructors
 MapPair::MapPair()
 {
-    MapPair(Node(),set<Node>());
+    MapPair(Node(),set<int>());
 }
 
-MapPair::MapPair(Node key, set<Node> values)
+MapPair::MapPair(Node key, set<int> values)
 {
     this->key = key;
     this->values = values;
@@ -20,66 +20,21 @@ Node& MapPair::getKey()
     return key;
 }
 
-set<Node> MapPair::getValues()
-{
-    return values;
-}
-
-int MapPair::addValue(Node toAdd)
-{
-    values.insert(toAdd);
-    return 1;
-}
-
-int MapPair::removeValue(Node toRemove)
+int MapPair::removeValue(int toRemove)
 {
     values.erase(toRemove);
     return 1;
 }
 
-int MapPair::removeIntValue(int toRemove)
+int MapPair::addValue(int key)
 {
-    intValues.erase(toRemove);
+    values.insert(key);
     return 1;
 }
 
-Node MapPair::findValue(Node toSearch)
+set<int> MapPair::getValues()
 {
-    it = find(values.begin(),values.end(),toSearch);
-    if(it!=values.end())
-        return toSearch;
-    return Node();
-}
-
-bool MapPair::hasValue(Node toSearch)
-{
-    it = find(values.begin(),values.end(),toSearch);
-    if(it!=values.end())
-        return true;
-    return false;
-}
-
-int MapPair::addIntValue(int key)
-{
-    intValues.insert(key);
-    return 1;
-}
-
-//Sudoku Functions
-bool MapPair::checkDuplicate()
-{
-    for(it = values.begin(); it != values.end(); ++it)
-        if((*it).getData() == key.getData())
-            return true;
-    return false;
-}
-
-bool MapPair::checkDuplicate(int data)
-{
-    for(auto ot = intValues.begin(); ot != intValues.end(); ++ot)
-        if((*ot == key.getData()))
-            return true;
-    return false;
+    return values;
 }
 
 //Overload Operators

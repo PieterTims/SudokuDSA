@@ -2,6 +2,7 @@
 #define GRAPH_H
 
 #define MAX_PAIR 81
+#include <unordered_set>
 #include "map_pair.h"
 //DO NOT FORGET TO IMPLEMENT DESTRUCTOR
 
@@ -23,13 +24,15 @@ private:
     //Graph Variables
     MapPair adjList[MAX_PAIR];
     Node allNode[MAX_PAIR];
-    //Sudoku Variables
 
     //Helper Functions
     void printGraphHelper();
     void setcolor(unsigned short);
-    bool generateRandomSudokuHelper(int);
+    bool generateRandomSudokuHelper(int,std::unordered_set<int>);
     int findUnassigned();
+    bool checkDuplicate(int);
+    bool checkDuplicate(int,int);
+    std::unordered_set<int> shufflingNine();
 };
 
 #endif // GRAPH_H
