@@ -1,29 +1,26 @@
 # depslib dependency file v1.0
-1669825415 source:c:\users\pieter\documents\sudokudsa\src\node.cpp
+1669882025 source:c:\users\pieter\documents\sudokudsa\src\node.cpp
 	"node.h"
 
-1669825405 c:\users\pieter\documents\sudokudsa\include\node.h
+1669882046 c:\users\pieter\documents\sudokudsa\include\node.h
 
-1669818983 source:c:\users\pieter\documents\sudokudsa\main.cpp
-	<iostream>
-	<windows.h>
+1669880847 source:c:\users\pieter\documents\sudokudsa\main.cpp
 	"graph.h"
-	<vector>
 
-1669827441 source:c:\users\pieter\documents\sudokudsa\src\graph.cpp
+1669881936 source:c:\users\pieter\documents\sudokudsa\src\graph.cpp
 	<iostream>
-	<cstdlib>
 	<windows.h>
+	<unordered_set>
 	"graph.h"
 	"time.h"
 
-1669827374 c:\users\pieter\documents\sudokudsa\include\graph.h
+1669881412 c:\users\pieter\documents\sudokudsa\include\graph.h
 	"map_pair.h"
 
-1669826706 source:c:\users\pieter\documents\sudokudsa\src\map_pair.cpp
+1669881895 source:c:\users\pieter\documents\sudokudsa\src\map_pair.cpp
 	"map_pair.h"
 
-1669826614 c:\users\pieter\documents\sudokudsa\include\map_pair.h
+1669881870 c:\users\pieter\documents\sudokudsa\include\map_pair.h
 	"node.h"
 	<set>
 	<algorithm>

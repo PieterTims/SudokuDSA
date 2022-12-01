@@ -8,13 +8,28 @@
 class Graph
 {
 public:
-    Graph(); //array of linked list size
+    //Constructors
+    Graph();
+//    Graph(); //read from file
+
+    //Graph Functions
     void printGraph();
     int findID(int);
+
+    //Sudoku Functions
+    bool generateRandomSudoku();
+
 private:
+    //Graph Variables
     MapPair adjList[MAX_PAIR];
-    void printLineHelper();
+    Node allNode[MAX_PAIR];
+    //Sudoku Variables
+
+    //Helper Functions
+    void printGraphHelper();
     void setcolor(unsigned short);
+    bool generateRandomSudokuHelper(int);
+    int findUnassigned();
 };
 
 #endif // GRAPH_H

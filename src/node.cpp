@@ -4,12 +4,7 @@ using namespace std;
 //Constructors
 Node::Node()
 {
-    Node(-1,-1);
-}
-
-Node::Node(int id)
-{
-    Node(id,0);
+    Node(-1,0);
 }
 
 Node::Node(int id, int data)
@@ -19,11 +14,6 @@ Node::Node(int id, int data)
 }
 
 //Node Functions
-int Node::getID()
-{
-    return id;
-}
-
 int Node::getData()const
 {
     return data;
@@ -33,6 +23,11 @@ int Node::setData(int data)
 {
     this->data = data;
     return 1;
+}
+
+int Node::getID()const
+{
+    return id;
 }
 
 //Overload Operators

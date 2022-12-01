@@ -9,11 +9,10 @@ class Node
 public:
     //Constructors
     Node();
-    Node(int); //no data
     Node(int,int);
 
     //Node Functions
-    int getID();
+    int getID()const;
     int getData()const;
     int setData(int);
 

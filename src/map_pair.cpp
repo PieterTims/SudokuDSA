@@ -15,7 +15,7 @@ MapPair::MapPair(Node key, set<Node> values)
 }
 
 //Key-Value Functions
-Node MapPair::getKey()
+Node& MapPair::getKey()
 {
     return key;
 }
@@ -37,13 +37,17 @@ int MapPair::removeValue(Node toRemove)
     return 1;
 }
 
+int MapPair::removeIntValue(int toRemove)
+{
+    intValues.erase(toRemove);
+    return 1;
+}
+
 Node MapPair::findValue(Node toSearch)
 {
     it = find(values.begin(),values.end(),toSearch);
     if(it!=values.end())
-    {
         return toSearch;
-    }
     return Node();
 }
 
@@ -51,35 +55,31 @@ bool MapPair::hasValue(Node toSearch)
 {
     it = find(values.begin(),values.end(),toSearch);
     if(it!=values.end())
-    {
         return true;
-    }
     return false;
 }
 
+int MapPair::addIntValue(int key)
+{
+    intValues.insert(key);
+    return 1;
+}
+
 //Sudoku Functions
-void MapPair::allDuplicate(int data)
+bool MapPair::checkDuplicate()
 {
-    set<Node> newDupeList = set<Node>();
     for(it = values.begin(); it != values.end(); ++it)
-    {
-        if((*it).getData() == data)
-        {
-            Node n = *it;
-            newDupeList.insert(n);
-        }
-    }
-    duplicates = newDupeList;
+        if((*it).getData() == key.getData())
+            return true;
+    return false;
 }
 
-int MapPair::existsDuplicate()
+bool MapPair::checkDuplicate(int data)
 {
-    return duplicates.size();
-}
-
-set<Node> MapPair::getDuplicates()
-{
-    return duplicates;
+    for(auto ot = intValues.begin(); ot != intValues.end(); ++ot)
+        if((*ot == key.getData()))
+            return true;
+    return false;
 }
 
 //Overload Operators
