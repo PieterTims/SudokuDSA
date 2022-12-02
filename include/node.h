@@ -16,10 +16,10 @@ public:
     int getData();
     int setData(int);
 
-    //Operators
+    //Overload Operators
     void operator=(const Node&);
 
-    //Node Variables
+    //Sudoku Variables
     bool unchanged = true;
 
 private:

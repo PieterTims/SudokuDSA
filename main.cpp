@@ -43,7 +43,7 @@ void playMenu()
 
 void solveMenu()
 {
-    cout << (char)218 <<"    INPUT SUDOKU TO SOLVE      " << (char)191<< endl;
+    cout << (char)218 <<"    INPUT SUDOKU TO SOLVE     " << (char)191<< endl;
     cout << (char)179;
     printLineHelper();
     cout << (char)179 << endl;
@@ -141,7 +141,6 @@ void solveSudoku()
 {
     Graph problem = Graph();
     Graph solution = problem;
-    problem.printGraph(solution);
 
     int x,y,ans;
     bool loop = true;
@@ -156,10 +155,14 @@ void solveSudoku()
             break;
         if(x < 0 || x > 8 || y < 0 || y > 8 || ans < 1 || ans > 9)
             cout << "   Please enter a valid input.\n";
-        else
+        else{
+            problem.adjList[y*9+x].getKey().unchanged = false;
             problem.updateGrid(y*9+x, ans, solution);
+        }
+
     }
     system("cls");
+    solution = problem;
     solution.generateSolution();
     solution.printGraph(problem);
     finishSolveMenu();
@@ -172,7 +175,7 @@ void solveSudoku()
     {
     case 'Y': //Solve a Sudoku
         cout << "\n";
-        playSudoku();
+        solveSudoku();
         break;
     }
 }

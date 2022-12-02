@@ -4,7 +4,6 @@
 #define MAX_VECTOR_SIZE 20
 #include "node.h"
 #include <set>
-#include <algorithm>
 
 class MapPair
 {
