@@ -11,22 +11,20 @@ class Graph
 public:
     //Constructors
     Graph();
-//    Graph(); //read from file
 
     //Graph Functions
-    void printGraph();
+    void printGraph(Graph);
 
     //Sudoku Functions
     bool generateSolution();
     bool createUnsolved(Graph);
-    bool updateGrid(int,int);
+    int updateGrid(int,int,Graph);
 
     //Graph Variables
     Node allNode[MAX_PAIR];
     MapPair adjList[MAX_PAIR];
+
 private:
-
-
     //Print Helper Functions
     void printGraphHelper();
     void setcolor(unsigned short);
@@ -34,6 +32,7 @@ private:
     //Sudoku Helper Functions
     bool generateSolutionHelper(int,std::unordered_set<int>);
     std::unordered_set<int> shufflingNine();
+    bool equals(Graph);
 
     //General Helper Functions
     int findUnassigned();
