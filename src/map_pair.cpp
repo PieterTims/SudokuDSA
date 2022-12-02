@@ -2,68 +2,44 @@
 
 using namespace std;
 
+//Constructors
 MapPair::MapPair()
 {
-    this->key = Node();
-    this->values = set<Node>();
+    MapPair(Node(),set<int>());
 }
 
-MapPair::MapPair(int ID, Node key, set<Node> values)
+MapPair::MapPair(Node key, set<int> values)
 {
-    this->ID = ID;
     this->key = key;
     this->values = values;
 }
 
-Node MapPair::getKey()
+//Key-Value Functions
+Node& MapPair::getKey()
 {
-    return this->key;
+    return key;
 }
 
-set<Node> MapPair::getValues()
-{
-    return this->values;
-}
-
-int MapPair::getID()
-{
-    return this->ID;
-}
-
-int MapPair::addValue(Node toAdd)
-{
-    values.insert(toAdd);
-    return 1;
-}
-
-int MapPair::removeValue(Node toRemove)
+int MapPair::removeValue(int toRemove)
 {
     values.erase(toRemove);
     return 1;
 }
-Node MapPair::findValue(Node toSearch)
+
+int MapPair::addValue(int key)
 {
-    it = find(values.begin(),values.end(),toSearch);
-    if(it!=values.end())
-    {
-        return toSearch;
-    }
-    return Node();
+    values.insert(key);
+    return 1;
 }
 
-bool MapPair::hasValue(Node toSearch)
+set<int> MapPair::getValues()
 {
-    it = find(values.begin(),values.end(),toSearch);
-    if(it!=values.end())
-    {
-        return true;
-    }
-    return false;
+    return values;
 }
 
+//Overload Operators
 void MapPair::operator=(const MapPair& newMapPair)
 {
-    ID = newMapPair.ID;
     key = newMapPair.key;
     values = newMapPair.values;
 }

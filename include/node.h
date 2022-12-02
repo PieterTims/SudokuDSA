@@ -9,18 +9,21 @@ class Node
 public:
     //Constructors
     Node();
-    Node(int); //no data
     Node(int,int);
-    //Getters
-    int getID();
+
+    //Node Functions
+    int getID()const;
     int getData();
-    //Setters
     int setData(int);
+
     //Operators
-    bool operator<(const Node&)const;
-    bool operator==(const Node&)const;
     void operator=(const Node&);
+
+    //Node Variables
+    bool unchanged = true;
+
 private:
+    //Node Variables
     int id;
     int data;
 };

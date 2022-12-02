@@ -1,13 +1,10 @@
 #include "node.h"
 using namespace std;
 
+//Constructors
 Node::Node()
 {
-    Node(-1,-1);
-}
-Node::Node(int id)
-{
-    Node(id,0);
+    Node(-1,0);
 }
 
 Node::Node(int id, int data)
@@ -16,11 +13,7 @@ Node::Node(int id, int data)
     this->data = data;
 }
 
-int Node::getID()
-{
-    return id;
-}
-
+//Node Functions
 int Node::getData()
 {
     return data;
@@ -32,16 +25,12 @@ int Node::setData(int data)
     return 1;
 }
 
-bool Node::operator<(const Node& otherNode)const
+int Node::getID()const
 {
-    return id < otherNode.id;
+    return id;
 }
 
-bool Node::operator==(const Node& otherNode)const
-{
-    return id == otherNode.id;
-}
-
+//Overload Operators
 void Node::operator=(const Node& newNode)
 {
     id = newNode.id;

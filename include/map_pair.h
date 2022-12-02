@@ -11,23 +11,22 @@ class MapPair
     public:
         //Constructors
         MapPair();
-        MapPair(int,Node,std::set<Node>);
-        //Getters
-        Node getKey();
-        std::set<Node> getValues();
-        int getID();
-        //Functions
-        int addValue(Node);
-        int removeValue(Node);
-        Node findValue(Node);
-        bool hasValue(Node);
-        //Operators
+        MapPair(Node,std::set<int>);
+
+        //Map Functions
+        Node& getKey();
+        int addValue(int);
+        int removeValue(int);
+        std::set<int> getValues();
+
+        //Overload Operators
         void operator=(const MapPair&);
+
     private:
-        int ID;
+        //Map Variables
         Node key;
-        std::set<Node> values;
-        std::set<Node>::iterator it;
+        std::set<int> values;
+        std::set<int>::iterator it;
 };
 
 #endif // MAP_PAIR_H
