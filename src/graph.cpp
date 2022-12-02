@@ -45,8 +45,13 @@ Graph::Graph()
 }
 
 //Graph Functions
-void Graph::printGraph()
+void Graph::printGraph(Graph solution)
 {
+    setcolor(9);
+    cout << "    " <<(char)218;
+    cout << " 0 1 2   3 4 5   6 7 8 ";
+    cout << (char)191<< endl;
+    setcolor(15);
     for(int i = 0; i < MAX_PAIR; i++)
     {
         if(i%9 == 0 && i != 0)
@@ -56,7 +61,11 @@ void Graph::printGraph()
             switch(i/27)
             {
             case 0: //top
+                cout << "  ";
+                setcolor(9);
                 cout << (char)218;
+                setcolor(15);
+                cout << " " << (char)218;
                 printGraphHelper();
                 cout << (char)194;
                 printGraphHelper();
@@ -66,7 +75,7 @@ void Graph::printGraph()
                 break;
             case 1:
             case 2://mid
-                cout << (char)195;
+                cout << "    " << (char)195;
                 printGraphHelper();
                 cout << (char)197;
                 printGraphHelper();
@@ -76,10 +85,21 @@ void Graph::printGraph()
                 break;
             }
         }
+        if(i%9 == 0)
+        {
+            setcolor(9);
+            cout << "  " << i/9 << " ";
+            setcolor(15);
+        }
+
         if(i%3 == 0)
             cout << (char)179 <<" ";
-        if(checkDuplicate(i))
+        if(checkDuplicate(i) || adjList[i].getKey().getData() != solution.adjList[i].getKey().getData())
             setcolor(12);
+        if(adjList[i].getKey().getData() == solution.adjList[i].getKey().getData())
+            setcolor(2);
+        if(adjList[i].getKey().unchanged)
+            setcolor(7);
         if(adjList[i].getKey().getData() == 0)
             setcolor(14);
         cout << adjList[i].getKey().getData() << " ";
@@ -87,7 +107,10 @@ void Graph::printGraph()
     }
     //bottom
     cout << (char)179 << endl;
-    cout << (char)192;
+    setcolor(9);
+    cout << "  " << (char)192;
+    setcolor(15);
+    cout << " " << (char)192;
     printGraphHelper();
     cout << (char)193;
     printGraphHelper();
@@ -99,13 +122,6 @@ void Graph::printGraph()
 //Sudoku Functions
 bool Graph::generateSolution()
 {
-    unordered_set<int> randCells;
-    int firstNine = 1;
-    while(randCells.size() < 9)
-        randCells.insert(rand()%81);
-
-    for(auto it = randCells.begin(); it != randCells.end(); ++it)
-        adjList[*it].getKey().setData(firstNine++);
     return generateSolutionHelper(findUnassigned(), shufflingNine());
 }
 
@@ -139,12 +155,14 @@ bool Graph::createUnsolved(Graph solution)
     return true;
 }
 
-bool Graph::updateGrid(int ID, int data)
+int Graph::updateGrid(int ID, int data, Graph solution)
 {
     if(adjList[ID].getKey().unchanged)
-        return false;
+        return -1;
     adjList[ID].getKey().setData(data);
-    return true;
+    if(findUnassigned() == -1 && equals(solution))
+        return 1;
+    return 0;
 }
 
 //Print Helper Functions
@@ -185,6 +203,14 @@ unordered_set<int> Graph::shufflingNine()
     while(shuffleNine.size() < 9)
         shuffleNine.insert(rand()%9+1);
     return shuffleNine;
+}
+
+bool Graph::equals(Graph solution)
+{
+    for(int i = 0; i < MAX_PAIR; i++)
+        if(adjList[i].getKey().getData() != solution.adjList[i].getKey().getData())
+            return false;
+    return true;
 }
 
 //General Helper Functions
