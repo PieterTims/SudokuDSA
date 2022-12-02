@@ -13,14 +13,14 @@ public:
 
     //Node Functions
     int getID()const;
-    int getData()const;
+    int getData();
     int setData(int);
 
     //Operators
-    bool operator<(const Node&)const;
-    bool operator==(const Node&)const;
-    bool operator==(const int)const;
     void operator=(const Node&);
+
+    //Node Variables
+    bool unchanged = true;
 
 private:
     //Node Variables

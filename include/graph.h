@@ -15,24 +15,30 @@ public:
 
     //Graph Functions
     void printGraph();
-    int findID(int);
 
     //Sudoku Functions
-    bool generateRandomSudoku();
+    bool generateSolution();
+    bool createUnsolved(Graph);
+    bool updateGrid(int,int);
 
-private:
     //Graph Variables
-    MapPair adjList[MAX_PAIR];
     Node allNode[MAX_PAIR];
+    MapPair adjList[MAX_PAIR];
+private:
 
-    //Helper Functions
+
+    //Print Helper Functions
     void printGraphHelper();
     void setcolor(unsigned short);
-    bool generateRandomSudokuHelper(int,std::unordered_set<int>);
+
+    //Sudoku Helper Functions
+    bool generateSolutionHelper(int,std::unordered_set<int>);
+    std::unordered_set<int> shufflingNine();
+
+    //General Helper Functions
     int findUnassigned();
     bool checkDuplicate(int);
     bool checkDuplicate(int,int);
-    std::unordered_set<int> shufflingNine();
 };
 
 #endif // GRAPH_H

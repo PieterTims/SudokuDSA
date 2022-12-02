@@ -5,10 +5,11 @@ using namespace std;
 int main()
 {
     Graph solution = Graph();
-    solution.generateRandomSudoku();
+    solution.generateSolution();
+    Graph unsolved = solution;
+    unsolved.createUnsolved(solution);
     solution.printGraph();
-//    Node testNode;
-//    testNode = Node(90,1);
-//    cout<<testNode.getData()<<endl;
+    unsolved.printGraph();
+
     return 0;
 }

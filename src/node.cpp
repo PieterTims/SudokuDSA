@@ -14,7 +14,7 @@ Node::Node(int id, int data)
 }
 
 //Node Functions
-int Node::getData()const
+int Node::getData()
 {
     return data;
 }
@@ -31,21 +31,6 @@ int Node::getID()const
 }
 
 //Overload Operators
-bool Node::operator<(const Node& otherNode)const
-{
-    return id < otherNode.id;
-}
-
-bool Node::operator==(const Node& otherNode)const
-{
-    return id == otherNode.id;
-}
-
-bool Node::operator==(const int data)const
-{
-    return this->data == data;
-}
-
 void Node::operator=(const Node& newNode)
 {
     id = newNode.id;
