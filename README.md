@@ -7,14 +7,14 @@
   
 Sudoku application using C language with Terminal(CLI) UI:  
 This application allows for creating and playing a random sudoku. It also allows for user-generated sudoku and solve it automatically.  
-[Final Report](https://docs.google.com/document/d/17KEvClPYOCj8zJy6nndjHSGdt01oirnCwKtH30jjIpw/edit?usp=sharing)
+
 ## General Specifications:
 1. Use at least one: Queue, linked list or pointer
 2. Use at least one: Tree, graphs, stacks
 3. The system must be in a class format
 4. Submission must also include:
-    - [x] Report
-    - [x] Video Demonstration
+    - [x] [Final Report](https://docs.google.com/document/d/17KEvClPYOCj8zJy6nndjHSGdt01oirnCwKtH30jjIpw/edit?usp=sharing)
+    - [x] [Video Demonstration](https://studentssbac.sharepoint.com/sites/NYOBANYOBA/_layouts/15/stream.aspx?id=%2Fsites%2FNYOBANYOBA%2FShared%20Documents%2FGeneral%2FRecordings%2FNew%20channel%20meeting%2D20221202%5F194524%2DMeeting%20Recording%2Emp4)
 
 ## TODO List:
 - DONE
